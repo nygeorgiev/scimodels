@@ -1,0 +1,10 @@
+__pycache__
+scimodels.egg-info
+
+.scimodels.tmp
+
+env/
+venv/
+
+.env/
+.venv/
