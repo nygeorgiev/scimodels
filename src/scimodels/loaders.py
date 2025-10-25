@@ -1,10 +1,12 @@
 from scimodels.abstract import Model
 from scimodels.models import (
+    vLLMModel,
     OpenAIModel,
     OpenAIBatchModel,
 )
 
 _SUPPORTED_PROVIDERS = {
+    "vllm": vLLMModel,
     "openai": OpenAIModel,
     "openai-batch": OpenAIBatchModel,
 }

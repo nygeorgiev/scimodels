@@ -5,6 +5,6 @@ scimodels.egg-info
 
 env/
 venv/
-
 .env/
 .venv/
+environment.yml

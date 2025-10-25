@@ -6,6 +6,7 @@ from scimodels.exceptions import DependencyError
 @dataclass(frozen=True)
 class DependencyResult:
     name: str
+    version: str | None = None
     module: types.ModuleType | None = None
     loaded: bool = False
     exception: DependencyError | None = None
@@ -29,16 +30,24 @@ class DepedencyLoader:
         dependency_name: str
     ) -> DependencyResult:
         try:
+            module = __import__(dependency_name)
+            version = module.__version__ if hasattr(module, "__version__") else None
             return DependencyResult(
                 name=dependency_name,
-                module=__import__(dependency_name),
+                version=version,
+                module=module,
                 loaded=True,
                 exception=None
             )
         except:
             return DependencyResult(
                 name=dependency_name,
+                version=None,
                 module=None,
                 loaded=False,
                 exception=DependencyError(dependency_name)
             )
+
+    @staticmethod
+    def make_exception(install_name: str) -> DependencyError:
+        return DependencyError(install_name)

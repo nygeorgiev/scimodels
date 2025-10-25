@@ -25,4 +25,4 @@ where = ["src"]
 Repository = "https://github.com/nygeorgiev/scimodels"
 
 [tool.setuptools.dynamic]
-version = { attr = "scimodels.__version__" }
+version = { attr = "scimodels.__version__.__version__" }

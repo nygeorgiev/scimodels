@@ -14,6 +14,9 @@ class Model(ABC):
         self._ensure_values()
         clear_temp_dir()
 
+        if repeat_count is None:
+            repeat_count = 1
+
         if repeat_count < 1:
             raise ValueError("'repeat_count' must be greater or equal to 1")    
     
